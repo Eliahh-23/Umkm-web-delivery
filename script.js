@@ -315,6 +315,7 @@ const allMenuItems   = document.querySelectorAll('.menu-item');
 
 const deliveryRadios = document.querySelectorAll('input[name="deliveryMethod"]');
 const addressContainer = document.getElementById('address-container');
+const obName = document.getElementById('ob-name');
 const obAddress = document.getElementById('ob-address');
 
 function formatRupiah(number) {
@@ -372,6 +373,7 @@ function openOrderBuilder(buttonEl, name, price, desc, img) {
 
     document.querySelector('input[value="pickup"]').checked = true;
     addressContainer.style.display = 'none';
+    obName.value = '';
     obAddress.value = '';
 
     currentDisplayedTotal = 0;
@@ -436,6 +438,7 @@ deliveryRadios.forEach(radio => {
     });
 });
 
+obName.addEventListener('input', () => updateOrderSummary(false));
 obAddress.addEventListener('input', () => updateOrderSummary(false));
 
 function updateOrderSummary(triggerPriceAnimation = true) {
@@ -450,16 +453,18 @@ function updateOrderSummary(triggerPriceAnimation = true) {
     }
 
     const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
+    const nameValue = obName.value.trim();
     const addressValue = obAddress.value.trim();
 
     let deliveryText = deliveryMethod === 'pickup' ? 'Ambil Ditempat' : 'Kirim ke Alamatku';
+    let nameText = (deliveryMethod === 'delivery' && nameValue) ? `\nNama: ${nameValue}` : '';
     let addressText = (deliveryMethod === 'delivery' && addressValue) ? `\nAlamat: ${addressValue}` : '';
 
     const message = 
         `Halo, saya mau pesan:\n\n` +
         `Varian: ${currentItem.name}\n` +
         `Jumlah: ${currentItem.qty}\n` +
-        `Pengiriman: ${deliveryText}${addressText}\n` +
+        `Pengiriman: ${deliveryText}${nameText}${addressText}\n` +
         `Total: ${formatRupiah(targetTotal)}\n\n` +
         `Mohon info selanjutnya. Terima kasih!`;
 
