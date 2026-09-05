@@ -497,3 +497,4 @@ if (heroVideo && heroContent) {
         heroVideo.addEventListener('play', showHeroText, { once: true });
     }
 }
+}
