@@ -356,6 +356,19 @@ nav {
     letter-spacing: 2px;
 }
 .logo span { color: var(--accent); }
+.logo-heart {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    margin-right: 1px;
+    vertical-align: 8px;
+    animation: logoHeartFloat 2.4s ease-in-out infinite;
+}
+@keyframes logoHeartFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
 
 .nav-links {
     display: flex;
@@ -799,6 +812,9 @@ nav {
     font-size: 0.9rem;
     line-height: 1.6;
 }
+.contact-card p.wa-name {
+    margin-bottom: 2px;
+}
 .btn-chat {
     display: inline-block;
     margin-top: 15px;
@@ -1063,6 +1079,22 @@ nav {
     box-shadow: 0 0 10px rgba(255, 183, 3, 0.25);
 }
 .address-container { margin-top: 10px; }
+#ob-name {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-main);
+    padding: 12px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+#ob-name:focus {
+    outline: none;
+    border-color: var(--accent);
+}
 #ob-address {
     width: 100%;
     background: rgba(255, 255, 255, 0.02);
