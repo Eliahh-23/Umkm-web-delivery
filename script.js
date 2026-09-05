@@ -287,7 +287,7 @@ hiddenElements.forEach((el) => observer.observe(el));
 // =====================================================================
 // ORDER BUILDER & WHATSAPP INTEGRATION
 // =====================================================================
-const WA_NUMBER = "6282299844952"; // Nomor WhatsApp toko
+const WA_NUMBER = "6288225719407"; // Nomor WhatsApp toko
 
 let currentItem = {
     name: '',
